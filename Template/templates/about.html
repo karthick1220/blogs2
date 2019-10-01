@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+ <p>
+  This webpage consists of some of the external links:
+
+  <ol>
+    <li>Checkout the logic to differentiate external and internal links.</li>
+    <li>Django Templates has for loops for you.</li>
+  </ol>
+  </p>
+
+  {% for data in data_list %}
+
+  {% if '.html' in data.link %}
+      <p>
+        <a href="{% url data.link|slice:":-5" %}">{{ data.name|upper }} </a>
+      </p>
+  {% else %}
+      <p>
+        <a href="{{ data.link }}" >{{ data.name }} </a>
+      </p>
+  {% endif %}
+
+  {% endfor %}
+
+<a href="{% url 'home' %}">Go Home</a>
+
+
+</body>
+</html>
